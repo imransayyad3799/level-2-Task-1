@@ -1,0 +1,122 @@
+<html>
+<head>
+    <title>calculator</title>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+}
+body{
+     background: #090b0c;
+}
+ *{
+    box-sizing:border-box;
+}
+ .calculator{
+     width: 100%;
+     max-width: 280px;
+     margin: 50px auto;
+     border-radius: 10px;
+     overflow: hidden;
+     box-shadow: 0 0 5px #999999;
+    
+}
+ .screen{
+     background-color: rgb(185, 178, 181);
+     width: 100%;
+     min-height: 100px;
+     text-align: right;
+     font-size: 24px;
+     padding: 10px;
+     padding-top: 20px;
+}
+ .cal-buttons{
+     background: #ffffff;
+     padding: 15px;
+}
+ ul#buttons{
+     list-style-type: none;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+}
+ ul#buttons li{
+     font-size: 24px;
+     color: #e2e0e0;
+     background: #0f0f0f;
+     width: 20%;
+     margin:5px 2.5%;
+     padding-top: 11px;
+     height: 50px;
+     border-radius: 50%;
+     font-weight: bold;
+     cursor: pointer;
+     text-align: center;
+     transition: all 0.3s;
+}
+ ul#buttons li:hover,ul#buttons li:visited{
+     background: #777777;
+     color: #1af7e4;
+}
+ ul#buttons li:active{
+     background: #000000;
+}
+ li#equals{
+     width: 100%;
+     border-radius: 10px;
+}
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="screen">
+           <h1 id="result"></h1>
+        </div>
+        <div class="cal-buttons">
+           <ul id="buttons">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li id="clear">C</li>
+              <li>4</li>
+              <li>5</li>
+              <li>6</li>
+              <li>+</li>
+              <li>7</li>
+              <li>8</li>
+              <li>9</li>
+              <li>-</li>
+              <li>0</li>
+              <li>.</li>
+              <li>x</li>
+              <li>÷</li>
+              <li id="equals">=</li>
+           </ul>
+        </div>
+     </div>
+     <script>
+        var buttons = document.getElementById("buttons");
+var li = buttons.querySelectorAll("li");
+var result = document.getElementById("result");
+
+
+for (let i = 0; i < li.length; i++) {
+    li[i].addEventListener("click", function() {
+        if (this.innerHTML == "=") {
+            result.innerHTML = eval(result.innerHTML);
+        } else {
+            if (this.innerHTML == "÷") {
+                result.innerHTML += "/";
+            } else if (this.innerHTML == "x") {
+                result.innerHTML += "*";
+            } else if (this.innerHTML == 'C') {
+                result.innerHTML = "";
+            } else {
+                result.innerHTML += this.innerHTML;
+            }
+        }
+    });
+}
+     </script>
+</body>
+</html>
